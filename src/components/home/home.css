@@ -10,6 +10,7 @@
   background-size: cover;
   /* background-color: #49497582; */
   background-color: #494975;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.3);
   /* background-color: #adc1ffab; */
   /* background-color: #583f706c; */
   /* box-shadow: inset 0 0 0 4px rgba(207, 210, 246, 0.3); */
@@ -25,7 +26,7 @@
 .home__img:hover {
   transform: scale(1.3);
   background-color: #494975;
-  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 @keyframes profile__animate {

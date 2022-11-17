@@ -1,7 +1,7 @@
 import { Box, styled, Typography } from "@mui/material";
 import Send from "../../assets/send.svg";
 import { theme } from "../../theme/theme";
-import { CTAButton } from "../cta-button";
+import { ThemedButton } from "../themed-button";
 import SectionTitle from "../section-title";
 
 const Wrapper = styled("div")(({ theme }) => ({
@@ -50,10 +50,10 @@ const Data = () => {
           applications using ReactJS library or NextJS framework.
         </p>
 
-        <CTAButton href="#contact">
+        <ThemedButton component="a" href="#contact">
           Say Hello&nbsp;
           <Send />
-        </CTAButton>
+        </ThemedButton>
       </Content>
     </Wrapper>
   );

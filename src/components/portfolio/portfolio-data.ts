@@ -60,11 +60,10 @@ export const portfolioData: ProjectData[] = [
     github: "",
   },
   {
-    title: "Toast Notification System",
+    title: "Toaster",
     about:
-      "A flexible kanban system. Now manage your personal projects more efficiently. Work in multiple projects at a time.",
-    stack:
-      "NextJS, TypeScript, Redux-Toolkit, React Beautiful DnD, TailwindCSS",
+      "A demonstration of a toast notification system developed from the ground.",
+    stack: "ReactJS, Redux-Toolkit, React Beautiful DnD, TailwindCSS",
     image: progressivo,
     live: "",
     github: "",

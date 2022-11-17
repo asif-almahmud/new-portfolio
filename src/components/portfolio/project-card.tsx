@@ -10,7 +10,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { CTAButton } from "../cta-button";
+import { ThemedButton } from "../themed-button";
 import SectionTitle from "../section-title";
 
 interface IProjectCard {
@@ -22,20 +22,9 @@ interface IProjectCard {
   github: string;
 }
 
-const About = styled(Typography)(({ theme }) => ({
+const ContentText = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
   color: theme.palette.primary.dark,
-  padding: "5px 10px 0px 10px",
-  lineHeight: "24px",
-  [theme.breakpoints.up("xs")]: {
-    textAlign: "justify",
-  },
-}));
-
-const TechStack = styled(Typography)(({ theme }) => ({
-  fontWeight: "400",
-  color: theme.palette.primary.dark,
-  padding: "5px 10px 5px 10px",
   lineHeight: "24px",
   [theme.breakpoints.up("xs")]: {
     textAlign: "justify",
@@ -52,7 +41,14 @@ const ProjectCard = (props: IProjectCard) => {
         image={image}
         alt="green iguana"
       />
-      <CardContent>
+      <CardContent
+        sx={{
+          padding: "15px 20px 20px 20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "4px",
+        }}
+      >
         <Typography
           gutterBottom
           variant="h5"
@@ -60,16 +56,15 @@ const ProjectCard = (props: IProjectCard) => {
             fontSize: "16px",
             fontWeight: "500",
             color: (theme) => theme.palette.primary.dark,
-            padding: "10px 10px 0px 10px",
           }}
         >
           {title}
         </Typography>
-        <About gutterBottom variant="body2">
+        <ContentText gutterBottom variant="subtitle2">
           {about}
-        </About>
-        <TechStack gutterBottom variant="body2">
-          <Typography
+        </ContentText>
+        <Box>
+          <ContentText
             variant="h5"
             gutterBottom
             sx={{
@@ -78,10 +73,18 @@ const ProjectCard = (props: IProjectCard) => {
             }}
           >
             Stack<span style={{ marginLeft: "3px" }}>:&nbsp;</span>
-          </Typography>
+          </ContentText>
 
-          {stack}
-        </TechStack>
+          <ContentText
+            gutterBottom
+            variant="subtitle2"
+            sx={{
+              display: "inline",
+            }}
+          >
+            {stack}
+          </ContentText>
+        </Box>
       </CardContent>
       <Box sx={{ width: "100%", height: "50px" }}></Box>
       <Box
@@ -98,15 +101,20 @@ const ProjectCard = (props: IProjectCard) => {
             padding: "10px 0 15px 0",
           }}
         >
-          <CTAButton small href={live} target="_blank">
+          <ThemedButton component="a" size="small" href={live} target="_blank">
             <i className="uil uil-globe"></i>
             Live
             <i className="uil uil-external-link-alt"></i>
-          </CTAButton>
-          <CTAButton small href={github} target="_blank">
+          </ThemedButton>
+          <ThemedButton
+            component="a"
+            size="small"
+            href={github}
+            target="_blank"
+          >
             <i className="uil uil-github"></i>Github
             <i className="uil uil-external-link-alt"></i>
-          </CTAButton>
+          </ThemedButton>
         </CardActions>
       </Box>
     </Card>

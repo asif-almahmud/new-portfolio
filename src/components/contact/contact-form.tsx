@@ -1,36 +1,95 @@
-import { Box, Button, TextField } from "@mui/material";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Button,
+  Snackbar,
+  TextField,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Formik, FormikValues } from "formik";
+import { Form, Formik, Field, FormikValues, FormikState } from "formik";
 import * as yup from "yup";
 import Send from "../../assets/send.svg";
-import { CTAButton } from "../cta-button";
+import { ThemedButton } from "../themed-button";
+import emailjs from "@emailjs/browser";
+import { useEffect, useRef, useState } from "react";
 
 const initialValues = {
-  name: "",
+  from_name: "",
   email: "",
   message: "",
 };
 
 const userSchema = yup.object().shape({
-  name: yup.string().required("required"),
+  from_name: yup.string().required("required"),
   email: yup.string().email("invalid email").required("required"),
   message: yup.string().required("required"),
 });
 
 const ContactForm = () => {
+  const [showErrorMessageOnSubmit, setShowErrorMessageOnSubmit] =
+    useState(false);
+  const [formEelement, setFormElement] = useState<HTMLFormElement | string>("");
+  const [showAlert, setShowAlert] = useState(false);
+  const form = useRef<HTMLFormElement | null>(null);
   const theme = useTheme();
   const isNonMobile = useMediaQuery(theme.breakpoints.up("xs"));
 
-  const handleFormSubmit = (values: FormikValues) => {
-    console.log(values);
+  const sendEmail = () => {
+    emailjs
+      .sendForm(
+        "service_j1fgz6q",
+        "template_k8gr9re",
+        formEelement,
+        "OBx6Zd-zEWeekCXaR"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("message sent");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
+
+  const handleFormSubmit = (values: FormikValues, { resetForm }: any) => {
+    console.log(values);
+    console.log(form.current);
+    console.log(formEelement);
+    console.log(form.current ? form.current : "");
+
+    sendEmail();
+    resetForm();
+  };
+
+  useEffect(() => {
+    setFormElement(form.current as HTMLFormElement);
+  }, []);
   return (
     <Box m="20px">
+      {/* <Snackbar
+      open={showAlert}
+      autoHideDuration={4000}
+      // onClose={handleClose}
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
+    >
+      <Alert
+        // onClose={handleClose}
+        severity={"success"}
+        variant="filled"
+        elevation={6}
+        sx={{ width: "100%" }}
+      >
+
+      </Alert>
+    </Snackbar> */}
       <Formik
-        onSubmit={handleFormSubmit}
         initialValues={initialValues}
         validationSchema={userSchema}
+        onSubmit={handleFormSubmit}
       >
         {({
           values,
@@ -41,7 +100,7 @@ const ContactForm = () => {
           handleSubmit,
         }) => (
           <Box sx={{ width: isNonMobile ? "50%" : "100%", bg: "red" }}>
-            <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            <form ref={form} onSubmit={handleSubmit} style={{ width: "100%" }}>
               <Box
                 sx={{
                   display: "flex",
@@ -57,10 +116,10 @@ const ContactForm = () => {
                   label="Your Name"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.name}
-                  name="name"
-                  error={!!touched.name && !!errors.name}
-                  helperText={touched.name && errors.name}
+                  value={values.from_name}
+                  name="from_name"
+                  error={!!touched.from_name && !!errors.from_name}
+                  helperText={touched.from_name && errors.from_name}
                 />
                 <TextField
                   fullWidth
@@ -89,9 +148,9 @@ const ContactForm = () => {
                   helperText={touched.message && errors.message}
                 />
 
-                <CTAButton href="" type="submit">
+                <ThemedButton component="button" type="submit">
                   Send Message <Send />
-                </CTAButton>
+                </ThemedButton>
               </Box>
             </form>
           </Box>

@@ -74,13 +74,13 @@ const About = () => {
               </Typography>
             </Box>
             <Typography sx={{ textAlign: "justify" }}>
-              To gear my level up to the industry standard, recently I have
-              participated in a Software Engineering Internship Program in
-              Prayers Connect Inc. I have copmleted the six month long program
-              successfully. There I have gotten exposure to the latest and
-              ruling technologies like - TypeScript, NextJS, React Query, MUI,
-              Git, GitHub etc. And the professional experience of coding through
-              problem solving and team work was invaluable.
+              Recently I have got a chance to participate in a Software
+              Engineering Internship Program offered by Prayers Connect Inc. I
+              have completed the six month long program successfully. There I
+              have gotten exposure to the latest and ruling technologies like -
+              TypeScript, NextJS, React Query, MUI, Git, GitHub etc. Their the
+              professional experience I got through facing real challenges and
+              team work was invaluable.
             </Typography>
           </ExperienceBlock>
         </Details>
