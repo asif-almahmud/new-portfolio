@@ -1,14 +1,5 @@
-import {
-  Alert,
-  AlertTitle,
-  Box,
-  Button,
-  Snackbar,
-  TextField,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { Form, Formik, Field, FormikValues, FormikState } from "formik";
+import { Alert, AlertTitle, Box, Snackbar, TextField } from "@mui/material";
+import { Formik, FormikValues } from "formik";
 import * as yup from "yup";
 import Send from "../../assets/send.svg";
 import { ThemedButton } from "../themed-button";
@@ -28,13 +19,10 @@ const userSchema = yup.object().shape({
 });
 
 const ContactForm = () => {
-  const [showErrorMessageOnSubmit, setShowErrorMessageOnSubmit] =
-    useState(false);
   const [formEelement, setFormElement] = useState<HTMLFormElement | string>("");
   const [showAlert, setShowAlert] = useState(false);
+  const [messageSentSuccessful, setMessageSentSuccessful] = useState(false);
   const form = useRef<HTMLFormElement | null>(null);
-  const theme = useTheme();
-  const isNonMobile = useMediaQuery(theme.breakpoints.up("xs"));
 
   const sendEmail = () => {
     emailjs
@@ -48,8 +36,12 @@ const ContactForm = () => {
         (result) => {
           console.log(result.text);
           console.log("message sent");
+          setMessageSentSuccessful(true);
+          setShowAlert(true);
         },
         (error) => {
+          setMessageSentSuccessful(false);
+          setShowAlert(true);
           console.log(error.text);
         }
       );
@@ -65,27 +57,34 @@ const ContactForm = () => {
     resetForm();
   };
 
+  const handleClose = () => {
+    setShowAlert(false);
+  };
+
   useEffect(() => {
     setFormElement(form.current as HTMLFormElement);
   }, []);
   return (
-    <Box m="20px">
-      {/* <Snackbar
-      open={showAlert}
-      autoHideDuration={4000}
-      // onClose={handleClose}
-      anchorOrigin={{ vertical: "top", horizontal: "center" }}
-    >
-      <Alert
-        // onClose={handleClose}
-        severity={"success"}
-        variant="filled"
-        elevation={6}
-        sx={{ width: "100%" }}
+    <Box sx={{ width: "100%" }}>
+      <Snackbar
+        open={showAlert}
+        autoHideDuration={4000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-
-      </Alert>
-    </Snackbar> */}
+        <Alert
+          onClose={handleClose}
+          severity={messageSentSuccessful ? "success" : "error"}
+          variant="filled"
+          elevation={6}
+          sx={{ width: "100%" }}
+        >
+          <AlertTitle>{messageSentSuccessful ? "Success" : "Error"}</AlertTitle>
+          {messageSentSuccessful
+            ? "Message sent successfully. Thanks for reaching out."
+            : "Sorry something went wrong. Please try again later."}
+        </Alert>
+      </Snackbar>
       <Formik
         initialValues={initialValues}
         validationSchema={userSchema}
@@ -99,14 +98,13 @@ const ContactForm = () => {
           handleChange,
           handleSubmit,
         }) => (
-          <Box sx={{ width: isNonMobile ? "50%" : "100%", bg: "red" }}>
-            <form ref={form} onSubmit={handleSubmit} style={{ width: "100%" }}>
+          <Box>
+            <form ref={form} onSubmit={handleSubmit}>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
                   gap: "20px",
-                  bg: "red",
                 }}
               >
                 <TextField

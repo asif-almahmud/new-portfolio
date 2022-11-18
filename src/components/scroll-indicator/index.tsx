@@ -1,4 +1,4 @@
-import { lighten, styled } from "@mui/material";
+import { alpha, lighten, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 const ProgressContainer = styled("div")(({ theme }) => ({
@@ -62,7 +62,10 @@ const ScrollIndicator = () => {
     >
       <ProgressBar
         sx={{
-          backgroundColor: "#ff6f007c",
+          backgroundColor: (theme) =>
+            alpha(theme.palette.secondary.light, 0.55),
+          // backgroundColor: "#A09FB6",
+          // backgroundColor: "#ff6f007c",
           // backgroundColor: (theme) => theme.palette.secondary.light,
           width: `${scrolled}%`,
         }}
@@ -72,3 +75,4 @@ const ScrollIndicator = () => {
 };
 
 export default ScrollIndicator;
+// #A09FB6

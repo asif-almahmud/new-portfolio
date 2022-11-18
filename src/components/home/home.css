@@ -1,3 +1,16 @@
+.wheel {
+  animation: roll-up 1000ms infinite;
+}
+
+@keyframes roll-up {
+  from {
+    transform: translateY(130px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
 .home__subtitle {
   position: relative;
   font-size: var(--h3-font-size);
@@ -9,7 +22,7 @@
   background-position: center;
   background-size: cover;
   /* background-color: #49497582; */
-  background-color: #494975;
+  background-color: #a09fb6;
   box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.3);
   /* background-color: #adc1ffab; */
   /* background-color: #583f706c; */
@@ -25,7 +38,7 @@
 
 .home__img:hover {
   transform: scale(1.3);
-  background-color: #494975;
+  /* background-color: #424242; */
   box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.3);
 }
 

@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { alpha, styled } from "@mui/material";
 import React from "react";
 
 type Props = {};
@@ -7,12 +7,13 @@ const Wrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+  gap: "6px",
 }));
 
 const SocialIcon = styled("i")(({ theme }) => ({
-  fontSize: "1.25rem",
-  color: theme.palette.primary.light,
-  transition: "300ms ease-in-out",
+  fontSize: "22px",
+  color: alpha(theme.palette.primary.main, 0.85),
+  transition: "50ms ease-in-out",
   "&:hover": {
     color: theme.palette.primary.dark,
   },
