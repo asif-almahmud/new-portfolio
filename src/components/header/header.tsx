@@ -1,6 +1,8 @@
 import { Container, lighten, styled } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useScrollSpyIndicator } from "../../context/ScrollSpyContext";
+import { navOptions } from "../../lib/nav-options";
 import ScrollIndicator from "../scroll-indicator";
 import "./header.css";
 
@@ -23,8 +25,14 @@ const ProgressBar = styled("div")(({ theme }) => ({
 const NavOptionsContainer = styled("ul")(({ theme }) => ({
   display: "flex",
   gap: "4px",
-  height: "100%",
+  // height: "100%",
   // backgroundColor: theme.palette.primary.superLight,
+  [theme.breakpoints.down(576)]: {
+    justifyContent: "space-around",
+  },
+  [theme.breakpoints.down(330)]: {
+    transform: "scale(0.85)",
+  },
 }));
 
 const NavOption = styled("ul")(({ theme }) => ({
@@ -54,33 +62,33 @@ const NavOption = styled("ul")(({ theme }) => ({
   },
 }));
 
-const navOptions = [
-  { option: "home", icon: "uil-estate" },
-  { option: "about", icon: "uil-user" },
-  { option: "skills", icon: "uil-file-alt" },
-  { option: "portfolio", icon: "uil-scenery" },
-  { option: "contact", icon: "uil-message" },
-];
-
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [elevated, setElevated] = useState(false);
+  const { navOption } = useScrollSpyIndicator();
 
-  window.onscroll = function () {
-    myFunction();
+  const onScroll = () => {
+    const scrolledFromDocumentTop = document.documentElement.scrollTop;
+
+    if (scrolledFromDocumentTop > 0) {
+      setElevated(true);
+    } else {
+      setElevated(false);
+    }
   };
 
-  function myFunction() {
-    var winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    var height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-    var scrolled = (winScroll / height) * 100;
-    // document.getElementById("myBar").style.width = scrolled + "%";
-  }
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <Wrapper>
+    <Wrapper
+      sx={{
+        boxShadow: elevated ? "0px 0px 12px gray" : "",
+      }}
+    >
       <ScrollIndicator />
 
       <Container
@@ -97,7 +105,25 @@ const Header = () => {
         <div className={showMenu ? "nav__menu show-menu" : "nav__menu"}>
           <NavOptionsContainer>
             {navOptions.map((item) => (
-              <NavOption key={item.option}>
+              <NavOption
+                key={item.option}
+                sx={{
+                  color: (theme) =>
+                    item.option === navOption
+                      ? `${theme.palette.primary.dark}`
+                      : `${theme.palette.primary.main}`,
+                  backgroundColor: (theme) =>
+                    item.option === navOption
+                      ? lighten(theme.palette.primary.superLight, 0.3)
+                      : theme.palette.primary.contrastText,
+                  borderRadius: "10px",
+                }}
+                onClick={() => {
+                  if (showMenu === true) {
+                    setShowMenu(false);
+                  }
+                }}
+              >
                 <a href={`#${item.option}`}>
                   <i className={`uil ${item.icon}`}></i> {item.option}
                 </a>
@@ -116,7 +142,7 @@ const Header = () => {
         <div
           className="nav__toggle"
           onClick={() => {
-            setShowMenu(true);
+            setShowMenu((prev) => !prev);
           }}
         >
           <i className="uil uil-apps"></i>

@@ -4,10 +4,11 @@ import {
   Button,
   ButtonProps,
   styled,
+  Tooltip,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React from "react";
+import { useState, useEffect } from "react";
 
 const AnchorButton = styled(Button)<
   ButtonProps & {
@@ -33,9 +34,18 @@ const AnchorButton = styled(Button)<
 }));
 
 const SocialContact = () => {
+  const [text, setText] = useState("Click to copy email address");
   const theme = useTheme();
   const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
   const isXSmallDevice = useMediaQuery(theme.breakpoints.down("xs"));
+
+  useEffect(() => {
+    if (text === "Copied email address") {
+      setTimeout(() => {
+        setText("Click to copy email address");
+      }, 5000);
+    }
+  }, [text]);
   return (
     <Box
       sx={{
@@ -61,16 +71,27 @@ const SocialContact = () => {
         >
           <i className="uil uil-linkedin"></i>
         </AnchorButton>
-        <AnchorButton
-          component="a"
-          href="https://github.com/asif-almahmud"
-          className="home__social-icon"
-          target="_blank"
-          rel="noreferrer"
-          sx={{ borderRadius: isXSmallDevice ? "0 5px 5px 0" : "0 5px 0 0" }}
-        >
-          <i className="uil uil-envelope"></i>
-        </AnchorButton>
+        <Tooltip title={text} placement="top">
+          <AnchorButton
+            component="a"
+            // href="https://github.com/asif-almahmud"
+            className="home__social-icon"
+            // target="_blank"
+            rel="noreferrer"
+            sx={{ borderRadius: isXSmallDevice ? "0 5px 5px 0" : "0 5px 0 0" }}
+            onClick={() => {
+              navigator.clipboard.writeText("asifalmahmud1990@gmail.com");
+              setText("Copied email address");
+            }}
+            // onMouseEnter={async()=>{const copiedText = await navigator.clipboard.readText();
+            //   if(copiedText!==text || copiedText!== "Click to copy email address"){
+            //     setText("Click to copy email address");
+            //   }
+            // }}
+          >
+            <i className="uil uil-envelope"></i>
+          </AnchorButton>
+        </Tooltip>
       </Box>
       <Box
         sx={{
@@ -80,7 +101,7 @@ const SocialContact = () => {
       >
         <AnchorButton
           component="a"
-          href="/"
+          href="https://www.facebook.com/profile.php?id=100088089613140"
           className="home__social-icon"
           target="_blank"
           rel="noreferrer"
@@ -88,16 +109,18 @@ const SocialContact = () => {
         >
           <i className="uil uil-facebook-f"></i>
         </AnchorButton>
-        <AnchorButton
-          component="a"
-          href="/"
-          className="home__social-icon"
-          target="_blank"
-          rel="noreferrer"
-          sx={{ borderRadius: isXSmallDevice ? "0 0 5px 0" : "0 5px 5px 0" }}
-        >
-          <i className="uil uil-whatsapp"></i>
-        </AnchorButton>
+        <Tooltip title="Whatsapp no: 01756833947">
+          <AnchorButton
+            component="a"
+            href="/"
+            className="home__social-icon"
+            target="_blank"
+            rel="noreferrer"
+            sx={{ borderRadius: isXSmallDevice ? "0 0 5px 0" : "0 5px 5px 0" }}
+          >
+            <i className="uil uil-whatsapp"></i>
+          </AnchorButton>
+        </Tooltip>
       </Box>
     </Box>
   );

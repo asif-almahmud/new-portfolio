@@ -77,10 +77,10 @@ const About = () => {
               Recently I have got a chance to participate in a Software
               Engineering Internship Program offered by Prayers Connect Inc. I
               have completed the six month long program successfully. There I
-              have gotten exposure to the latest and ruling technologies like -
-              TypeScript, NextJS, React Query, MUI, Git, GitHub etc. Their the
-              professional experience I got through facing real challenges and
-              team work was invaluable.
+              have got exposure to the cutting edge technologies like -
+              TypeScript, ReactJS, NextJS, React Query, MUI, Git, GitHub etc.
+              Their the professional experience I got through facing real
+              challenges and team work was invaluable.
             </Typography>
           </ExperienceBlock>
         </Details>

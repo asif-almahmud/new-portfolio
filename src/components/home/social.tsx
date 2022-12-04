@@ -7,7 +7,7 @@ const Wrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  gap: "6px",
+  gap: "16px",
 }));
 
 const SocialIcon = styled("i")(({ theme }) => ({
@@ -38,7 +38,7 @@ const Social = (props: Props) => {
         <SocialIcon className="uil uil-github-alt"></SocialIcon>
       </a>
       <a
-        href="/"
+        href="https://www.facebook.com/profile.php?id=100088089613140"
         className="home__social-icon"
         target="_blank"
         rel="noreferrer"

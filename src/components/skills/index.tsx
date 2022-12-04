@@ -52,17 +52,19 @@ const fluentWith = [
 ];
 
 const familiarWith = [
+  "Bootstrap",
+  "Reactstrap",
   "Figma",
   "Formik",
   "React Hook Form",
   "Yup",
   "Jotai",
+  "React Testing Library",
+  "Jest",
   "Node",
   "Express",
   "MongoDB",
   "Firebase",
-  "Bootstrap",
-  "Reactstrap",
 ];
 
 const Skills = () => {

@@ -6,7 +6,7 @@ const ProgressContainer = styled("div")(({ theme }) => ({
   height: "3px",
   // height: theme.spacing(0.27),
   position: "absolute",
-  top: "100%",
+  top: "0%",
   left: "0%",
 }));
 
@@ -62,10 +62,10 @@ const ScrollIndicator = () => {
     >
       <ProgressBar
         sx={{
-          backgroundColor: (theme) =>
-            alpha(theme.palette.secondary.light, 0.55),
-          // backgroundColor: "#A09FB6",
-          // backgroundColor: "#ff6f007c",
+          // backgroundColor: (theme) =>
+          //   alpha(theme.palette.secondary.light, 0.55),
+          // backgroundColor: "#9292b8",
+          backgroundColor: "#ff8528a8",
           // backgroundColor: (theme) => theme.palette.secondary.light,
           width: `${scrolled}%`,
         }}

@@ -40,6 +40,7 @@ const ProjectCard = (props: IProjectCard) => {
         height="140"
         image={image}
         alt="green iguana"
+        sx={{ width: "100%", height: "200px", objectFit: "cover" }}
       />
       <CardContent
         sx={{
