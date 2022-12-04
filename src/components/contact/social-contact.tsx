@@ -112,11 +112,14 @@ const SocialContact = () => {
         <Tooltip title="Whatsapp no: 01756833947">
           <AnchorButton
             component="a"
-            href="/"
+            // href="/"
             className="home__social-icon"
-            target="_blank"
+            // target="_blank"
             rel="noreferrer"
-            sx={{ borderRadius: isXSmallDevice ? "0 0 5px 0" : "0 5px 5px 0" }}
+            sx={{
+              borderRadius: isXSmallDevice ? "0 0 5px 0" : "0 5px 5px 0",
+              cursor: "default",
+            }}
           >
             <i className="uil uil-whatsapp"></i>
           </AnchorButton>
