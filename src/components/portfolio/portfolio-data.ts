@@ -17,7 +17,7 @@ export const portfolioData: ProjectData[] = [
   {
     title: "Progressivo",
     about:
-      "A flexible kanban system. Now manage your personal projects more efficiently. Work in multiple projects at a time.",
+      "Now manage your projects more efficiently. Work in multiple projects at a time.",
     stack:
       "NextJS, TypeScript, Redux-Toolkit, React Beautiful DnD, TailwindCSS",
     image: progressivo,
@@ -36,7 +36,7 @@ export const portfolioData: ProjectData[] = [
   // },
   {
     title: "HabitIt",
-    about: "Create good habits using this application.",
+    about: "An application to help build good habits.",
     stack:
       "React, Context API, TailwindCSS, Node, Express, MongoDB, Mongoose, JWT Authentication",
     image: habitit,
@@ -46,7 +46,7 @@ export const portfolioData: ProjectData[] = [
   {
     title: "Shopping Cart",
     about: "This app demonstrates a typical e-commerce shopping cart.",
-    stack: "ReactJS, TypeScript, Context API, Bootstrap, React Bootstrap",
+    stack: "React, TypeScript, Context API, Bootstrap, React Bootstrap",
     image: shoppingCart,
     live: "https://shopping-cart-tnce.onrender.com",
     github: "https://github.com/asif-almahmud/react-ts-shopping-cart",
@@ -54,7 +54,7 @@ export const portfolioData: ProjectData[] = [
   {
     title: "Expense Tracker",
     about: "A very handy expense tracker application with transaction history",
-    stack: "ReactJS, Redux, React-Redux, SASS(SCSS)",
+    stack: "React, Redux, React-Redux, SASS(SCSS)",
     image: moneyTracker,
     live: "https://asif-almahmud.github.io/simple-expense-tracker/",
     github: "https://github.com/asif-almahmud/simple-expense-tracker",
@@ -62,7 +62,7 @@ export const portfolioData: ProjectData[] = [
   {
     title: "React Toaster",
     about: "A toast notification system developed from the ground.",
-    stack: "ReactJS, SASS(SCSS)",
+    stack: "React, SASS(SCSS)",
     image: reactToaster,
     live: "https://quizzical-albattani-eac26d.netlify.app/",
     github: "https://github.com/asif-almahmud/react-toasts",
@@ -70,8 +70,8 @@ export const portfolioData: ProjectData[] = [
   {
     title: "Slack Clone (Partly)",
     about:
-      "The design of the application is produced inspired by Slack. Users can create channels and chat through different channels",
-    stack: "ReactJS, Firebase, Redux-Toolkit, Styled Components",
+      "The design of this application is developed inspired by Slack. Using this app users can chat through different channels",
+    stack: "React, Firebase, Redux-Toolkit, Styled Components",
     image: slackClone,
     live: "https://agitated-wilson-2e9a92.netlify.app/",
     github: "https://github.com/asif-almahmud/slack-clone",
