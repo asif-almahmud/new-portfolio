@@ -7,22 +7,27 @@ import { Box, styled } from "@mui/material";
 
 const Content = styled("div")(({ theme }) => ({
   display: "flex",
-  // backgroundColor: "red",
   width: "100%",
+  minHeight: "75vh",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "3rem",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column-reverse",
+    gap: "4rem",
+    padding: "4rem 0",
+  },
 }));
 
 const InfoContent = styled("div")(({ theme }) => ({
   display: "flex",
-  justifyContent: "space-evenly",
-  flex: 1,
+  alignItems: "center",
+  justifyContent: "space-between",
   width: "100%",
-  transform: "translateY(-66px)",
-  [theme.breakpoints.down("xs")]: {
+  maxWidth: "1000px",
+  [theme.breakpoints.down("md")]: {
     flexDirection: "column-reverse",
-    alignItems: "center",
-    gap: "2rem",
-    marginTop: "2rem",
-    transform: "translateY(0px)",
+    gap: "3rem",
   },
 }));
 
@@ -37,14 +42,16 @@ const Home = () => {
             flexDirection: "column",
             alignItems: "center",
             flex: 1,
-            // gap: "4rem",
+            width: "100%",
           }}
         >
           <InfoContent>
             <Data />
             <div className="home__img"></div>
           </InfoContent>
-          <ScrollDown />
+          <Box sx={{ mt: 8 }}>
+            <ScrollDown />
+          </Box>
         </Box>
       </Content>
     </Section>

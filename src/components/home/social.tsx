@@ -7,44 +7,61 @@ const Wrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  gap: "16px",
+  gap: "1.5rem",
+  [theme.breakpoints.down("xs")]: {
+    flexDirection: "row",
+    gap: "2rem",
+    width: "100%",
+    justifyContent: "center",
+  },
 }));
 
-const SocialIcon = styled("i")(({ theme }) => ({
-  fontSize: "22px",
-  color: alpha(theme.palette.primary.main, 0.85),
-  transition: "50ms ease-in-out",
+const SocialLink = styled("a")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "40px",
+  height: "40px",
+  borderRadius: "12px",
+  backgroundColor: alpha(theme.palette.primary.main, 0.05),
+  color: theme.palette.primary.main,
+  fontSize: "20px",
+  transition: "all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   "&:hover": {
-    color: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.main,
+    color: "#fff",
+    transform: "translateY(-5px) rotate(8deg)",
+    boxShadow: `0 10px 20px ${alpha(theme.palette.primary.main, 0.2)}`,
   },
 }));
 
 const Social = (props: Props) => {
   return (
     <Wrapper>
-      <a
+      <SocialLink
         href="https://www.linkedin.com/in/md-asif-al-mahmud-1b7690219/"
         target="_blank"
         rel="noreferrer"
+        aria-label="LinkedIn"
       >
-        <SocialIcon className="uil uil-linkedin-alt"></SocialIcon>
-      </a>
-      <a
+        <i className="uil uil-linkedin-alt"></i>
+      </SocialLink>
+      <SocialLink
         href="https://github.com/asif-almahmud"
-        className="home__social-icon"
         target="_blank"
         rel="noreferrer"
+        aria-label="GitHub"
       >
-        <SocialIcon className="uil uil-github-alt"></SocialIcon>
-      </a>
-      <a
+        <i className="uil uil-github-alt"></i>
+      </SocialLink>
+      <SocialLink
         href="https://www.facebook.com/profile.php?id=100088089613140"
-        className="home__social-icon"
         target="_blank"
         rel="noreferrer"
+        aria-label="Facebook"
       >
-        <SocialIcon className="uil uil-facebook-f"></SocialIcon>
-      </a>
+        <i className="uil uil-facebook-f"></i>
+      </SocialLink>
     </Wrapper>
   );
 };
