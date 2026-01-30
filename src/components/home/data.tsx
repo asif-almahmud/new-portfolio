@@ -38,16 +38,16 @@ const Data = () => {
   return (
     <Wrapper>
       <Content>
-        <Typography variant="h1">Asif Al Mahmud</Typography>
+        <Typography variant="h1">Md. Asif Al-Mahmud</Typography>
         <div>
-          <Typography variant="h2">Frontend Engineer</Typography>
+          <Typography variant="h2">Software Engineer (Front-End)</Typography>
           <p>Based in Dhaka, Bangladesh</p>
         </div>
         <p className="home__description">
-          {/* I love to work with TypeScript, ReactJS, NextJS, MUI, Vanilla CSS and
-        SASS.  */}
-          I love to create or contribute in beautiful, creative and useful
-          applications using ReactJS library or NextJS framework.
+          Front-End Engineer experienced in the React ecosystem, specializing in
+          developing responsive, performant, and user-centric web applications.
+          Skilled in component-based architecture, modern state management, and
+          reusable UI development.
         </p>
 
         <ThemedButton component="a" href="#contact">

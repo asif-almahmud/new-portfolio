@@ -25,6 +25,55 @@ const ExperienceBlock = styled("div")(({ theme }) => ({
   },
 }));
 
+const experiences = [
+  {
+    company: "Agency Handy",
+    role: "Software Engineer (L2)",
+    period: "Sept 2025 – Nov 2025",
+    location: "Dhaka, Bangladesh",
+    points: [
+      "Developed and maintained key features such as Service V2 and Custom Fields, improving workflow flexibility.",
+      "Resolved critical production issues to ensure platform stability and performance.",
+      "Mentored junior engineers and supported new hires for smooth onboarding.",
+    ],
+  },
+  {
+    company: "Agency Handy",
+    role: "Software Engineer (L1)",
+    period: "Sept 2023 – Sept 2025",
+    location: "Dhaka, Bangladesh",
+    points: [
+      "Designed and implemented major modules including File Management, Public Forms, Invoice Management, Tax, and Timesheet.",
+      "Contributed across all modules, including the checkout system and complex form handling.",
+      "Built reusable UI components with Material UI, accelerating feature development.",
+      "Leveraged React Query for optimized server state handling, reducing redundant API calls.",
+      "Collaborated with designers, backend engineers, and QA to deliver quality releases on schedule.",
+    ],
+  },
+  {
+    company: "Onethread",
+    role: "Software Engineer Intern",
+    period: "May 2023 – Aug 2023",
+    location: "Dhaka, Bangladesh",
+    points: [
+      "Contributed to front-end development using React and TypeScript.",
+      "Implemented responsive UIs with Material UI, following company design standards.",
+      "Assisted senior developers in building and refining key features.",
+    ],
+  },
+  {
+    company: "Prayers Connect Inc",
+    role: "Software Engineer Intern",
+    period: "Apr 2022 – Sept 2022",
+    location: "Remote",
+    points: [
+      "Assisted in building and maintaining web apps using ReactJS, NextJS, and TypeScript.",
+      "Developed UI components based on design specifications using Material UI.",
+      "Participated in daily stand-ups and sprint planning within an Agile team environment.",
+    ],
+  },
+];
+
 const About = () => {
   return (
     <Section id="about">
@@ -42,48 +91,77 @@ const About = () => {
         <Details>
           <Typography sx={{ textAlign: "justify" }}>
             My programming journey started with the help and encouragement of my
-            elder brother. It was in the first wave of COVID19 in Bangladesh.
-            From then my passion for learning and working with frontend
-            technologies just increased. I have never looked back to the Textile
-            Engineering career I have left behind.
+            elder brother during the first wave of COVID-19 in Bangladesh. Since
+            then, my passion for frontend technologies has only grown. I have
+            fully transitioned from Textile Engineering to Software Engineering,
+            driven by a love for creating beautiful and performant web
+            applications.
           </Typography>
-          <Typography sx={{ textAlign: "justify" }}>
-            I love to learn from online courses, video tutorials, and articles
-            of quality educators. I have taken courses from Udemy, AlgoExpert,
-            FrontendMasters, Scrimba, Educative etc. I am trying my best to
-            thrive in frontend engineering through experience and study. I do
-            have familiarity with some backend technologies as well.
-          </Typography>
-          <ExperienceBlock
-            sx={{
-              marginTop: "6px",
-            }}
+        </Details>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+            width: "100%",
+          }}
+        >
+          <Typography
+            variant="h3"
+            sx={{ textAlign: "center", fontSize: "24px", fontWeight: "600" }}
           >
-            <Box>
-              <Typography
-                variant="h4"
+            Professional Experience
+          </Typography>
+          {experiences.map((exp, index) => (
+            <ExperienceBlock key={index}>
+              <Box
                 sx={{
-                  fontSize: "18px",
-                  color: (theme) => theme.palette.primary.main,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                  marginBottom: "8px",
                 }}
               >
-                Software Engineer Internship
-              </Typography>
-              <Typography variant="subtitle1" sx={{ fontSize: "14px" }}>
-                at Prayers Connect Inc.
-              </Typography>
-            </Box>
-            <Typography sx={{ textAlign: "justify" }}>
-              Recently I got a chance to participate in a Software Engineering
-              Internship Program offered by Prayers Connect Inc. I have
-              completed the six month long program successfully. There I have
-              got exposure to the cutting edge technologies like - TypeScript,
-              ReactJS, NextJS, React Query, MUI, Git, GitHub etc. Their the
-              professional experience I got through facing real challenges and
-              team work was invaluable.
-            </Typography>
-          </ExperienceBlock>
-        </Details>
+                <Box>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: "18px",
+                      color: (theme) => theme.palette.primary.main,
+                      fontWeight: "600",
+                    }}
+                  >
+                    {exp.role}
+                  </Typography>
+                  <Typography variant="subtitle1" sx={{ fontSize: "14px" }}>
+                    at {exp.company}
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: "right" }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontSize: "12px", fontWeight: "600" }}
+                  >
+                    {exp.period}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: "12px" }}>
+                    {exp.location}
+                  </Typography>
+                </Box>
+              </Box>
+              <ul style={{ paddingLeft: "20px", margin: 0 }}>
+                {exp.points.map((point, i) => (
+                  <li key={i} style={{ marginBottom: "4px" }}>
+                    <Typography variant="body2">{point}</Typography>
+                  </li>
+                ))}
+              </ul>
+            </ExperienceBlock>
+          ))}
+        </Box>
       </Box>
     </Section>
   );

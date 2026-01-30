@@ -34,37 +34,38 @@ const BadgeCheckIcon = styled("i")(({ theme }) => ({
   fontSize: "22px",
 }));
 
-const fluentWith = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "React Router",
-  "NextJS",
-  "Redux",
-  "Redux-Toolkit",
-  "Context-API",
-  "React Query",
-  "MUI",
-  "TailwindCSS",
-  "SASS",
-];
-
-const familiarWith = [
-  "Bootstrap",
-  "Reactstrap",
-  "Figma",
-  "Formik",
-  "React Hook Form",
-  "Yup",
-  "Jotai",
-  "React Testing Library",
-  "Jest",
-  "Node",
-  "Express",
-  "MongoDB",
-  "Firebase",
+const skillsData = [
+  {
+    category: "Core",
+    skills: ["JavaScript", "TypeScript", "ReactJS", "NextJS", "HTML5", "CSS3"],
+  },
+  {
+    category: "State Management",
+    skills: ["Zustand", "Redux Toolkit", "Context API", "Jotai"],
+  },
+  {
+    category: "UI Libraries",
+    skills: ["Material UI", "TailwindCSS", "SCSS/SASS", "Styled Components"],
+  },
+  {
+    category: "Tools & Libraries",
+    skills: [
+      "React Query",
+      "React Hook Form",
+      "Zod",
+      "React Beautiful DnD",
+      "Git",
+      "GitHub",
+    ],
+  },
+  {
+    category: "Backend Familiarity",
+    skills: ["Node.js", "Express", "MongoDB", "Mongoose"],
+  },
+  {
+    category: "Mobile Familiarity",
+    skills: ["React Native"],
+  },
 ];
 
 const Skills = () => {
@@ -81,28 +82,19 @@ const Skills = () => {
         }}
       >
         <SectionTitle variant="h2">Technical Skills</SectionTitle>
-        <Details>
-          <SubTitle variant="h4">Fluent In</SubTitle>
-          <SkillsBlock>
-            {fluentWith.map((item) => (
-              <Skill key={item}>
-                <BadgeCheckIcon className="bx bx-badge-check"></BadgeCheckIcon>
-                <Typography variant="h4">{item}</Typography>
-              </Skill>
-            ))}
-          </SkillsBlock>
-        </Details>
-        <Details>
-          <SubTitle variant="h4">Familiar With</SubTitle>
-          <SkillsBlock>
-            {familiarWith.map((item) => (
-              <Skill key={item}>
-                <BadgeCheckIcon className="bx bx-badge-check"></BadgeCheckIcon>
-                <Typography variant="h4">{item}</Typography>
-              </Skill>
-            ))}
-          </SkillsBlock>
-        </Details>
+        {skillsData.map((group) => (
+          <Details key={group.category}>
+            <SubTitle variant="h4">{group.category}</SubTitle>
+            <SkillsBlock>
+              {group.skills.map((item) => (
+                <Skill key={item}>
+                  <BadgeCheckIcon className="bx bx-badge-check"></BadgeCheckIcon>
+                  <Typography variant="h4">{item}</Typography>
+                </Skill>
+              ))}
+            </SkillsBlock>
+          </Details>
+        ))}
       </Box>
     </Section>
   );
