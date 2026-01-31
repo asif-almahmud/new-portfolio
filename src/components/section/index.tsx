@@ -1,8 +1,8 @@
-import { Box, Container, styled } from "@mui/material";
-import { identity } from "lodash";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { styled, SxProps, Theme } from "@mui/material/styles";
 import { ReactNode, useState, useEffect, useMemo } from "react";
 import { useScrollSpyIndicator } from "../../context/ScrollSpyContext";
-import { navOptions } from "../../lib/nav-options";
 
 const SectionContainer = styled(Container)(({ theme }) => ({
   // minHeight: "100vh",
@@ -38,9 +38,10 @@ const SpyElementTwo = styled("div")(({ theme }) => ({
 interface ISectionProps {
   children: ReactNode;
   id?: string;
+  sx?: SxProps<Theme>;
 }
 
-const Section = ({ children, id }: ISectionProps) => {
+const Section = ({ children, id, sx }: ISectionProps) => {
   const [elementOne, setElementOne] = useState<Element | null>(null);
   const [elementTwo, setElementTwo] = useState<Element | null>(null);
   const { navOption, setNavOption } = useScrollSpyIndicator();
@@ -66,14 +67,14 @@ const Section = ({ children, id }: ISectionProps) => {
 
   const observeTargetElement = (
     observer: IntersectionObserver,
-    element: Element
+    element: Element,
   ) => {
     observer.observe(element);
   };
 
   const unobserveTargetElement = (
     observer: IntersectionObserver,
-    element: Element
+    element: Element,
   ) => {
     observer.unobserve(element);
   };
@@ -92,8 +93,17 @@ const Section = ({ children, id }: ISectionProps) => {
   }, [elementOne, elementTwo]);
 
   return (
-    <SectionContainer id={id} maxWidth="md">
-      <Box sx={{ height: "90px", width: "100%" }}></Box>
+    <SectionContainer
+      id={id}
+      maxWidth="md"
+      sx={{
+        ...sx,
+        pt: "6rem",
+        "&:first-of-type": {
+          pt: "0rem",
+        },
+      }}
+    >
       <SpyElementOne ref={setElementOne}></SpyElementOne>
       <SpyElementTwo ref={setElementTwo}></SpyElementTwo>
       {children}

@@ -8,7 +8,7 @@ import { Box, styled } from "@mui/material";
 const Content = styled("div")(({ theme }) => ({
   display: "flex",
   width: "100%",
-  minHeight: "75vh",
+  // minHeight: "75vh",
   alignItems: "center",
   justifyContent: "center",
   gap: "3rem",
@@ -27,7 +27,7 @@ const InfoContent = styled("div")(({ theme }) => ({
   maxWidth: "1000px",
   [theme.breakpoints.down("md")]: {
     flexDirection: "column-reverse",
-    gap: "3rem",
+    gap: "2.5rem",
   },
 }));
 
@@ -49,11 +49,9 @@ const Home = () => {
             <Data />
             <div className="home__img"></div>
           </InfoContent>
-          <Box sx={{ mt: 8 }}>
-            <ScrollDown />
-          </Box>
         </Box>
       </Content>
+      <ScrollDown />
     </Section>
   );
 };

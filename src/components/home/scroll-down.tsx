@@ -4,8 +4,8 @@ import ScrollDownIndicator from "../../assets/scroll-down.svg";
 
 const Wrapper = styled("div")(({ theme }) => ({
   position: "absolute",
-  bottom: "0",
-  [theme.breakpoints.down("xs")]: {
+  top: "calc(100% - 100px)",
+  [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));

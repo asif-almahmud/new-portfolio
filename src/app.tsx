@@ -19,6 +19,7 @@ import SectionTitle from "./components/section-title";
 import Skills from "./components/skills";
 import { ScrollSpyContextProvider } from "./context/ScrollSpyContext";
 import { theme } from "./theme/theme";
+import Experience from "./components/experience";
 
 const Main = styled("main")(({ theme }) => ({
   backgroundColor: `${theme.palette.primary.superLight}`,
@@ -45,6 +46,7 @@ function App() {
             </Routes> */}
             <Home />
             <About />
+            <Experience />
             <Skills />
             <Portfolio />
             <Contact />
