@@ -47,7 +47,7 @@ const Home = () => {
         >
           <InfoContent>
             <Data />
-            <div className="home__img"></div>
+            <div className="home__img" />
           </InfoContent>
         </Box>
       </Content>
