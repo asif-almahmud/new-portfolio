@@ -2,7 +2,7 @@ import { alpha, Box, Container, Link, styled } from "@mui/material";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { useScrollSpyIndicator } from "../../context/ScrollSpyContext";
 
-const SectionContainer = styled(Container)(({ theme }) => ({
+const Wrapper = styled(Container)(({ theme }) => ({
   height: "1px",
   margin: "auto",
   position: "fixed",
@@ -15,7 +15,7 @@ const SectionContainer = styled(Container)(({ theme }) => ({
 const GoToTop = () => {
   const { navOption } = useScrollSpyIndicator();
   return (
-    <SectionContainer maxWidth="md">
+    <Wrapper maxWidth="md">
       <Link
         href="#home"
         sx={{
@@ -23,7 +23,7 @@ const GoToTop = () => {
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
-          top: "calc(100vh - 130px)",
+          top: "calc(100vh - 66px)",
           right: "15px",
           zIndex: 100,
           width: "50px",
@@ -41,7 +41,7 @@ const GoToTop = () => {
       >
         <ArrowUpwardIcon color="secondary" />
       </Link>
-    </SectionContainer>
+    </Wrapper>
   );
 };
 
