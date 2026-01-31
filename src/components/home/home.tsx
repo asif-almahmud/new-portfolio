@@ -1,7 +1,7 @@
 import Data from "./data";
 import Social from "./social";
 import "./home.css";
-import ScrollDown from "./scroll-down";
+// import ScrollDown from "./scroll-down";
 import Section from "../section";
 import { Box, styled } from "@mui/material";
 
@@ -51,7 +51,7 @@ const Home = () => {
           </InfoContent>
         </Box>
       </Content>
-      <ScrollDown />
+      {/* <ScrollDown /> */}
     </Section>
   );
 };

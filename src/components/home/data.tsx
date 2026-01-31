@@ -3,9 +3,11 @@ import Send from "../../assets/send.svg";
 import { theme } from "../../theme/theme";
 import { ThemedButton } from "../themed-button";
 import SectionTitle from "../section-title";
+import CV from "../../assets/asif_al_mahmud_resume_frontend_engineer.pdf";
+import { FileDownloadOutlined } from "@mui/icons-material";
 
 const Wrapper = styled("div")(({ theme }) => ({
-  maxWidth: "450px",
+  maxWidth: "600px",
   margin: "0 20px",
   [theme.breakpoints.down("sm")]: {
     maxWidth: "350px",
@@ -117,7 +119,17 @@ const Data = () => {
           reusable UI development.
         </Description>
 
-        <Box sx={{ mt: 2 }}>
+        <Box
+          sx={{
+            mt: 2,
+            display: "flex",
+            gap: "1.5rem",
+            flexWrap: "wrap",
+            "@media (max-width: 450px)": {
+              justifyContent: "center",
+            },
+          }}
+        >
           <ThemedButton
             component="a"
             href="#contact"
@@ -138,6 +150,33 @@ const Data = () => {
           >
             Say Hello
             <Send />
+          </ThemedButton>
+
+          <ThemedButton
+            component="a"
+            target="_blank"
+            rel="noreferrer"
+            href={CV}
+            sx={{
+              background: "transparent",
+              color: (theme) => theme.palette.text.primary,
+              border: (theme) => `2px solid ${theme.palette.text.primary}`,
+              padding: "1.25rem 2.5rem",
+              borderRadius: "1.5rem",
+              fontSize: "1.1rem",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              "&:hover": {
+                transform: "translateY(-3px)",
+                background: (theme) => theme.palette.text.primary,
+                color: (theme) => theme.palette.background.paper,
+              },
+              transition: "all 0.3s ease",
+            }}
+          >
+            View Resume
+            <FileDownloadOutlined />
           </ThemedButton>
         </Box>
       </Content>

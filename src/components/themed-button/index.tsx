@@ -5,6 +5,8 @@ export const ThemedButton = styled(Box)<
     size?: "small";
     target?: string;
     component: string;
+    download?: string;
+    rel?: string;
   }
 >((props) => ({
   display: "inline-flex",

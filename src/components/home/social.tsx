@@ -8,7 +8,7 @@ const Wrapper = styled("div")(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "center",
   gap: "1.5rem",
-  [theme.breakpoints.down("xs")]: {
+  [theme.breakpoints.down("md")]: {
     flexDirection: "row",
     gap: "2rem",
     width: "100%",
